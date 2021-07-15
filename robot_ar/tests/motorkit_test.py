@@ -1,5 +1,5 @@
 import time
-import First_class_test.py
+import first_class_test
 
 LEFT_TRIM = 0
 RIGHT_TRIM = 0
