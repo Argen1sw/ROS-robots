@@ -6,7 +6,7 @@ RIGHT_TRIM = 0
 
 # Create an instance of the robot with the specified trim values.
 
-robot = motorkit_robot.Robot(left_trim=LEFT_TRIM, right_trim=RIGHT_TRIM)
+robot = first_class_test.Robot(left_trim=LEFT_TRIM, right_trim=RIGHT_TRIM)
 
 # Now move the robot around!
 # Each call below takes two parameters:
@@ -20,6 +20,6 @@ robot = motorkit_robot.Robot(left_trim=LEFT_TRIM, right_trim=RIGHT_TRIM)
 
 robot.left(0.5, 1)
 robot.right(0.5, 1)
-robot.steer(0.5, 0.2)
-time.sleep(3)
+robot.forward(0.5, 2)
+time.sleep(7)
 robot.stop()  # Stop the robot from moving.
