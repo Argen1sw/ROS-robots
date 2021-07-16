@@ -20,6 +20,6 @@ robot = first_class_test.Robot(left_trim=LEFT_TRIM, right_trim=RIGHT_TRIM)
 
 robot.left(0.5, 1)
 robot.right(0.5, 1)
-robot.forward(0.5, 2)
+robot.forward(0.2, 5)
 time.sleep(7)
 robot.stop()  # Stop the robot from moving.
