@@ -1,37 +1,60 @@
-class Employee:
+import rclpy
+from rclpy.node import node
+from std_msgs.msg import String
+import time
+import motor_class
 
-	raise_amount = 1.04
-
-	def __init__(self, first, last, pay):
-		self.first = first
-		self.last = last
-		self.pay = pay
-		self.email = first + '.' + last + '@company.com'
-
-	def fullname(self):
-		return '{} {}'.format(self.first, self.last)
-
-	def apply_raise(self):
-		self._pay = int(self.pay * self.raise_amount)
+LEFT_TRIM = 0
+RIGHT_TRIM = 0
 
 
+class MinimalSubscriber(Node):
+    def __init__(self):
+        super().__init__('minimal_subscriber')
+        self.subscription = self.create_subscription(
+            String,
+            'move',
+            self.listener_callback,
+            10)
+        self.subscription  # prevent unused variable warning
+        robot = motor_class.Robot(left_trim=LEFT_TRIM, right_trim=RIGHT_TRIM)
+        """Instatiate the "motor_class" which is actually the movement of the robot"""
 
-emp_1 = Employee('Corey', 'Schafer', 50000)
-emp_2 = Employee('Test', 'User', 60000)
+def listener_callback(self, msg):
+        command = msg.data
+        if command == 'forward':
+            print('Moving forward')
+            self.robot.forward()
+        elif command == 'backward':
+            print('Moving backward')
+            self.robot.backward()
+        elif command == 'left':
+            print('Turning left')
+            self.robot.left()
+        elif command == 'right':
+            print('Turning right')
+            self.robot.right()
+        elif command == 'stop':
+            print('Stopping')
+            self.robot.stop()
+        else:
+            print('Unknown command, stopping instead')
+            self.robot.stop()
 
-emp_1.raise_amount = 1.05
+def main(args=None):
+    #  initialize the wheelie node
+    rclpy.init(args=args)
+    minimal_subscriber = MinimalSubscriber()
+
+    #  wait for incoming commands
+    rclpy.spin(minimal_subscriber)
+
+    #  Interrupt detected, shut down
+    minimal_subscriber.robot.stop()
+    GPIO.cleanup()
+    minimal_subscriber.destroy_node()
+    rclpy.shutdown()
 
 
-print(Employee.raise_amount)
-print(emp_1.raise_amount)
-print(emp_2.raise_amount)
-
-
-# print(Employee.__dict__)
-
-# print(emp_2.email)
-# print(emp_1.email)
-
-# print(Employee.fullname(emp_1))
-# print(emp_1.fullname())
-# print(emp_2.fullname())
+if __name__ == '__main__':
+    main()
