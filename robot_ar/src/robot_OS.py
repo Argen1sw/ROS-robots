@@ -3,37 +3,35 @@ from rclpy.node import node
 from std_msgs.msg import String
 import time
 import motor_class
+import RPi.GPIO as GPIO
 
 LEFT_TRIM = 0
 RIGHT_TRIM = 0
 
+robot = motor_class.Robot(left_trim=LEFT_TRIM, right_trim=RIGHT_TRIM)
 
 class MinimalSubscriber(Node):
     def __init__(self):
         super().__init__('minimal_subscriber')
-        self.subscription = self.create_subscription(
-            String,
-            'move',
-            self.listener_callback,
-            10)
+        self.subscription = self.create_subscription(String,'move', self.listener_callback, 10)
         self.subscription  # prevent unused variable warning
         robot = motor_class.Robot(left_trim=LEFT_TRIM, right_trim=RIGHT_TRIM)
         """Instatiate the "motor_class" which is actually the movement of the robot"""
 
-def listener_callback(self, msg):
+    def listener_callback(self, msg):
         command = msg.data
         if command == 'forward':
             print('Moving forward')
-            self.robot.forward()
+            self.robot.forward(0.2, 5)
         elif command == 'backward':
             print('Moving backward')
-            self.robot.backward()
+            self.robot.backward(0.2, 5)
         elif command == 'left':
             print('Turning left')
-            self.robot.left()
+            self.robot.left(0.2, 5)
         elif command == 'right':
             print('Turning right')
-            self.robot.right()
+            self.robot.right(0.2, 5)
         elif command == 'stop':
             print('Stopping')
             self.robot.stop()
