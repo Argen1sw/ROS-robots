@@ -43,19 +43,19 @@ robot = motor_class.Robot(left_trim=LEFT_TRIM, right_trim=RIGHT_TRIM)
 while True:
    print('W = Forward; A = Left; D = Right; S = Backward Press E to exit')
    displacement = input()
-   if displacement == W:
+   if displacement == 'W':
       robot.forward(0.3, 1)
       time.sleep(3)
-   elif displacement == A:
+   elif displacement == 'A':
       robot.left(0.3, 1)
       time.sleep(3)
-   elif displacement == D:
+   elif displacement == 'D':
       robot.right(0.3, 1)
       time.sleep(3)
-   elif displacement == S:
+   elif displacement == 'S':
       robot.backward(0.3, 1)
       time.sleep(3)
-   elif displacement == E:
+   elif displacement == 'E':
       robot.stop()
       break
 
