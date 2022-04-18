@@ -29,36 +29,22 @@ RIGHT_TRIM = 0
 
 robot = motor_class.Robot(left_trim=LEFT_TRIM, right_trim=RIGHT_TRIM)
 
-# Now move the robot around!
-# Each call below takes two parameters:
-#  - speed: The speed of the movement, a value from -1.0 to +1.0.  The higher the value
-#           the faster the movement.  You need to start with a value around 0.10
-#           to get enough torque to move the robot.
-#  - time (seconds):  Amount of time to perform the movement.  After moving for
-#                     this amount of seconds the robot will stop.  This parameter
-#                     is optional and if not specified the robot will start moving
-#                     forever.
-
 #Loop that runs the code that will register the keyboard entry
 while True:
    print('W = Forward; A = Left; D = Right; S = Backward Press E to exit')
    displacement = input()
-   if displacement == 'W':
-      robot.forward(0.3, 1)
-      time.sleep(3)
-   elif displacement == 'A':
+   if displacement == 'W': #Displace the robot forward at 0.3 speed for 1 second 
+      robot.forward(0.3, 1) 
+      time.sleep(1)
+   elif displacement == 'A': #Displace the robot left at 0.3 speed for 1 second 
       robot.left(0.3, 1)
-      time.sleep(3)
-   elif displacement == 'D':
+      time.sleep(1)
+   elif displacement == 'D':  #Displace the robot right at 0.3 speed for 1 second 
       robot.right(0.3, 1)
-      time.sleep(3)
-   elif displacement == 'S':
+      time.sleep(1)
+   elif displacement == 'S': #Displace the robot backward at 0.3 speed for 1 second 
       robot.backward(0.3, 1)
-      time.sleep(3)
-   elif displacement == 'E':
+      time.sleep(1)
+   elif displacement == 'E': #Stops the robot
       robot.stop()
       break
-
-
-# That's it!  Note that on exit the robot will automatically stop moving.
-

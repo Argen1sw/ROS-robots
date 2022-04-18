@@ -1,4 +1,5 @@
-
+#This was a attend to use the a keyboard listener/recorded so the robot can be controlled by it 
+#Still I could not used because its being controlled using SSH
 import time
 import motor_class
 from pynput.keyboard import listener
@@ -13,6 +14,7 @@ RIGHT_TRIM = 0
 
 robot = motor_class.Robot(left_trim=LEFT_TRIM, right_trim=RIGHT_TRIM)
 
+
 with Listener(on_press=on_press, on_release=on_release) as listener:
    listener.join()
 
@@ -21,23 +23,3 @@ with Listener(on_press=on_press, on_release=on_release) as listener:
 
    def on_release(key):
       print('key released')
-
-
-
-
-# while True:
-#    try:
-#       if keyboard.is_pressed('w'):
-#          robot.forward(0.3, 1)
-#          time.sleep(3)
-#       elif keyboard.is_pressed('A'):
-#          robot.left(0.3, 1)
-#          time.sleep(3)
-#       elif keyboard.is_pressed('D'):
-#          robot.right(0.3, 1)
-#          time.sleep(3)
-#       elif keyboard.is_pressed('S'):
-#          robot.backward(0.3, 1)
-#          time.sleep(3)
-#    except:
-#       break
