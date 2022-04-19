@@ -34,16 +34,16 @@ while True:
    print('W = Forward; A = Left; D = Right; S = Backward Press E to exit')
    displacement = input()
    if displacement == 'W': #Displace the robot forward at 0.3 speed for 1 second 
-      robot.forward(0.3, 1) 
+      robot.forward(-0.3, 0.5) 
       time.sleep(1)
    elif displacement == 'A': #Displace the robot left at 0.3 speed for 1 second 
-      robot.left(0.3, 1)
+      robot.left(-0.3, 0.5)
       time.sleep(1)
    elif displacement == 'D':  #Displace the robot right at 0.3 speed for 1 second 
-      robot.right(0.3, 1)
+      robot.right(-0.3, 0.5)
       time.sleep(1)
    elif displacement == 'S': #Displace the robot backward at 0.3 speed for 1 second 
-      robot.backward(0.3, 1)
+      robot.backward(-0.3, 0.5)
       time.sleep(1)
    elif displacement == 'E': #Stops the robot
       robot.stop()
