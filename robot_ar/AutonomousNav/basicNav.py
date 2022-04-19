@@ -20,21 +20,22 @@ if __name__ == '__main__':
     while True:
         # Define the variables that will be used for navigation
         range = 30
-        distance = ser.read()
-        #distance2 = int.from_bytes(distance, byteorder='big')
-        
-        if distance != b'':
+        number = ser.read()
+
+        if number != b'':
+            distance = int.from_bytes(number, byteorder='big')
             # First conditional statement to move the robot forward 
-            if range >= int.from_bytes(distance, byteorder='big'):
-                print("robot forward")
+            if range >= distance:
+                print("robot forward" + distance)
                 time.sleep(1)
 
             # Second conditional statement to move the robot to the right 
-            elif range <= int.from_bytes(distance, byteorder='big'):
-                print("robot going right")
+            elif range <= distance:
+                print("robot going right" + distance)
                 time.sleep(1)
 
-            elif 5 <= int.from_bytes(distance, byteorder='big'): #Stops the robot
+            elif 5 <= distance: #Stops the robot
+                print("robot will stop" + distance)
                 robot.stop()
                 break
 
