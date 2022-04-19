@@ -16,25 +16,25 @@ robot = motor_class.Robot(left_trim=LEFT_TRIM, right_trim=RIGHT_TRIM)
 if __name__ == '__main__':
     ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
     ser.reset_input_buffer()
-    while True:
-        if ser.in_waiting > 0:
-            line = ser.readline().decode('utf-8').rstrip()
-            
-            # Define the variables that will be used for navigation
-            int(line)
-            range = 30
 
+    while True:
+        # Define the variables that will be used for navigation
+        range = 30
+        distance = ser.read()
+        #distance2 = int.from_bytes(distance, byteorder='big')
+        
+        if distance != b'':
             # First conditional statement to move the robot forward 
-            if range >= line:
+            if range >= int.from_bytes(distance, byteorder='big'):
                 print("robot forward")
                 time.sleep(1)
 
             # Second conditional statement to move the robot to the right 
-            elif range <= line:
+            elif range <= int.from_bytes(distance, byteorder='big'):
                 print("robot going right")
                 time.sleep(1)
 
-            elif 30 == 'E' | 5 <= line: #Stops the robot
+            elif 5 <= int.from_bytes(distance, byteorder='big'): #Stops the robot
                 robot.stop()
                 break
 
