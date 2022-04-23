@@ -22,6 +22,8 @@ if __name__ == '__main__':
     ser.reset_input_buffer()
 
     while True:
+        ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
+        ser.reset_input_buffer()
         arduino = ser.read()
         if arduino != b'':
             arduino_data = int.from_bytes(arduino, byteorder='big')
@@ -30,16 +32,16 @@ if __name__ == '__main__':
             #First conditional statement to move the robot forward 
             print("starting the navigation loop")
             if range >= arduino_data:
-                print("robot forward" + arduino_data)
+                print("robot forward" + str(arduino_data))
                 time.sleep(1)
 
             # Second conditional statement to move the robot to the right 
             elif range <= arduino_data:
-                print("robot going right" + arduino_data)
+                print("robot going right" + str(arduino_data))
                 time.sleep(1)
 
             elif 5 <= arduino_data: #Stops the robot
-                print("robot will stop" + arduino_data)
+                print("robot will stop" + str(arduino_data))
                 robot.stop()
 
 
