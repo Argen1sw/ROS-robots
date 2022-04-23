@@ -31,18 +31,23 @@ if __name__ == '__main__':
             range = 30
             #First conditional statement to move the robot forward 
             print("starting the navigation loop")
-            if 5 <= arduino_data: #Stops the robot
+            if arduino_data <= 5: #Stops the robot
                 print("robot will stop" + str(arduino_data))
                 robot.stop()
 
             elif range <= arduino_data:
                 print("robot forward" + str(arduino_data))
+                robot.forward(0.2, 0.2)
                 time.sleep(1)
 
             # Second conditional statement to move the robot to the right 
             elif range >= arduino_data:
                 print("robot going right" + str(arduino_data))
+                robot.right(0.2, 0.5)
                 time.sleep(1)
+
+
+        time.sleep(2)
 
 
 
