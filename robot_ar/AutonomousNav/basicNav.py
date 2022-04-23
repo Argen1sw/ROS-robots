@@ -21,27 +21,28 @@ def CollectUltrasonic():
 
     print("Inizializing Raspberry connection with Arduino")
     arduino = serial.Serial('/dev/ttyUSB0', 9600, timeout = 1)
+    arduino.reset_input_buffer()
     # Define the variables that will be used for navigation
     range = 30
-    arduino_data = arduino.readline()
-    # distance = int(arduino_data, byteorder='big')
-    distance = int.from_bytes(arduino_data, byteorder='big')
-    print(distance)
+    if arduino.in_waiting > 0:
+        arduino_data = arduino.readline().decode('utf-8')
+        print(arduino_data)
+        distance = int(arduino_data)
 
-    # First conditional statement to move the robot forward 
-    print("starting the navigation loop")
-    if range >= distance:
-        print("robot forward" + distance)
-        time.sleep(1)
+        # First conditional statement to move the robot forward 
+        print("starting the navigation loop")
+        if range >= distance:
+            print("robot forward" + distance)
+            time.sleep(1)
 
-    # Second conditional statement to move the robot to the right 
-    elif range <= distance:
-        print("robot going right" + distance)
-        time.sleep(1)
+        # Second conditional statement to move the robot to the right 
+        elif range <= distance:
+            print("robot going right" + distance)
+            time.sleep(1)
 
-    elif 5 <= distance: #Stops the robot
-        print("robot will stop" + distance)
-        robot.stop()
+        elif 5 <= distance: #Stops the robot
+            print("robot will stop" + distance)
+            robot.stop()
     
     print('Connection closed')
     print('<--------------------------------------->')
@@ -54,3 +55,5 @@ schedule.every(20).seconds.do(CollectUltrasonic)
 while True:
     schedule.run_pending()
     time.sleep(1)
+
+print("if come here that means is not working")
