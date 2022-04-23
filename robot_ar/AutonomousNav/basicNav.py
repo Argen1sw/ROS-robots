@@ -18,15 +18,18 @@ robot = motor_class.Robot(left_trim=LEFT_TRIM, right_trim=RIGHT_TRIM)
 
 
 def CollectUltrasonic():
-    arduino = serial.Serial('/dev/ttyUSB0', 9600)
+
+    print("Inizializing Raspberry connection with Arduino")
+    arduino = serial.Serial('/dev/ttyUSB0', 9600, timeout = 1)
     # Define the variables that will be used for navigation
     range = 30
     arduino_data = arduino.readline()
-
     # distance = int(arduino_data, byteorder='big')
     distance = int.from_bytes(arduino_data, byteorder='big')
     print(distance)
+
     # First conditional statement to move the robot forward 
+    print("starting the navigation loop")
     if range >= distance:
         print("robot forward" + distance)
         time.sleep(1)
@@ -40,15 +43,13 @@ def CollectUltrasonic():
         print("robot will stop" + distance)
         robot.stop()
     
-    arduino_data = 0
-    arduino.close()
     print('Connection closed')
     print('<--------------------------------------->')
 
 # ------------------------------------------ MAIN NAVIGATION CODE --------------------------------------------------
 print("navigation started")
 
-schedule.every(2).seconds.do(CollectUltrasonic)
+schedule.every(20).seconds.do(CollectUltrasonic)
 
 while True:
     schedule.run_pending()
