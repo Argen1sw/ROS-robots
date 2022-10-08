@@ -14,5 +14,7 @@ Notes for myself:
 
 
 3) For the navigation capabiltiies and object detections side of the project: 
-	Start testing the camera ralsense D400 and if this is going to work with the raspberry pi
-	
+	-Start testing the camera ralsense D400 and if this is going to work with the raspberry pi
+	-Play with the realsense wrappers and get a good idea of how the cameras can be implemented on object detections
+	-Wrap the cameras modules with the displacement modules, such as the motors movement and program I put together already
+	-Tune the whole system
