@@ -4,9 +4,9 @@ Simple overview of use/purpose.
 Description
 Root repository that will contain anb list all robotics projects made by me
 
-## 1) robot_ar will be a basic robot that will serve the purpose of practicing ROS1 core concepts, python/C++ and Linux.
+1) robot_ar will be a basic robot that will serve the purpose of practicing ROS1 core concepts, python/C++ and Linux.
 
-## 2) robot..
+2) robot..
 
 
 Getting Started
