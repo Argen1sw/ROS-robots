@@ -1,0 +1,13 @@
+# IDE
+.vscode/
+
+# colcon artifacts
+build/
+install/
+log/
+bundle/
+
+# catkin artifacts
+.catkin_workspace
+devel/
+src/CMakeLists.txt

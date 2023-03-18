@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>robot_ar</name>
+  <version>0.0.0</version>
+  <description>Robot project</description>
+  <maintainer email="argen1swong@gmail.com">Argenis Wong</maintainer>
+  <license>MIT</license>
+  <buildtool_depend>colcon-ros-bundle</buildtool_depend>
+
+  <depend>rclpy</depend>
+  <depend>std_msgs</depend>
+  <depend>motor_control</depend>
+  <depend>control_input</depend>
+</package>
