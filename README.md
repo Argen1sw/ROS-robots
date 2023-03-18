@@ -1,3 +1,38 @@
-# Robotics projects
+# Robot projects
+Simple overview of use/purpose.
 
-## 1) AR_Robot will be a basic navigation autonomous robot with its main function being to be able to navigate around an area
+Description
+Root repository that will contain anb list all robotics projects made by me
+
+1) robot_ar will be a basic robot that will serve the purpose of practicing ROS1 core concepts, python/C++ and Linux.
+
+2) robot..
+
+
+Getting Started
+Dependencies
+Describe any prerequisites, libraries, OS version, etc., needed before installing program.
+ex. Windows 10
+Installing
+How/where to download your program
+Any modifications needed to be made to files/folders
+Executing program
+How to run the program
+Step-by-step bullets
+code blocks for commands
+Help
+Any advise for common problems or issues.
+
+command to run if program contains helper info
+Authors
+Contributors names and contact info
+
+ex. Dominique Pizzie
+ex. @DomPizzie
+
+Initial Release
+License
+This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
+
+Acknowledgments
+Inspiration, code snippets, etc.
