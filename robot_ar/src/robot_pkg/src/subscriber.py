@@ -14,15 +14,15 @@ def robot_nav(data):
     #Basic Navigation logic that uses the listener input for navigate 
     if data.data == 1:
         print("robot moving forward")
-        robot.forward()
+        robot.forward(0.2, 0.2)
     elif data.data == 2:
        print("Robot moving backwards")
-       robot.backward()
+       robot.backward(0.2, 0.2)
     elif data.data == 3:
-        robot.right()
+        robot.right(0.2, 0.5)
         print("Robot moving to the right")
     elif data.data == 4:
-        robot.left()
+        robot.left(0.2, 0.5)
         print("Robot moving to the left")
     else:
         robot.stop()
