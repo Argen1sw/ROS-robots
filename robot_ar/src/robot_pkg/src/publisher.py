@@ -15,10 +15,20 @@ def input_publisher():
     gamepad = inputs.devices.gamepads[0]
 
     while not rospy.is_shutdown():
+        user_output = 0
         events = gamepad.read()
-        
-        
-        user_output = 1
+        for event in events:
+            if event.code == "ABS_HATOY" and event.code < 0:
+                user_output = 1
+            elif event.code == "ABS_HATOY" and event.code > 0:
+                user_output = 2
+            elif event.code == "ABS_HATOX" and event.code > 0:
+                user_output = 3
+            elif event.code == "ABS_HATOX" and event.code < 0:
+                user_output = 4
+            else:
+                user_output = 0
+
         pub.publish(user_output)
         rate.sleep()
 
