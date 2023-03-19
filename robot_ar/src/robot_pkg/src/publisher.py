@@ -19,13 +19,13 @@ def input_publisher():
         events = gamepad.read()
         for event in events:
             print("Loop is working")
-            if event.code == "ABS_HAT0Y" and event.code < 0:
+            if event.code == "ABS_HAT0Y" and event.state < 0:
                 user_output = 1
-            elif event.code == "ABS_HAT0Y" and event.code > 0:
+            elif event.code == "ABS_HAT0Y" and event.state > 0:
                 user_output = 2
-            elif event.code == "ABS_HAT0X" and event.code > 0:
+            elif event.code == "ABS_HAT0X" and event.state > 0:
                 user_output = 3
-            elif event.code == "ABS_HAT0X" and event.code < 0:
+            elif event.code == "ABS_HAT0X" and event.state < 0:
                 user_output = 4
             else:
                 user_output = 0
