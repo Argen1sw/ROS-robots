@@ -103,7 +103,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES robot_pkg
+# LIBRARIES robot_pkg
 #  CATKIN_DEPENDS rospy std_msgs
 #  DEPENDS system_lib
 )
@@ -114,15 +114,15 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-include_directories(
-# include
-  ${catkin_INCLUDE_DIRS}
-)
+# include_directories(
+#   include
+#   ${catkin_INCLUDE_DIRS}
+# )
 
 ## Declare a C++ library
-# add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/robot_pkg.cpp
-# )
+  # add_library(${PROJECT_NAME}
+  # src/${PROJECT_NAME}/robot_pkg.cpp
+#  )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
