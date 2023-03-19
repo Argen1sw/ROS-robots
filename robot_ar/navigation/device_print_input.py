@@ -10,5 +10,5 @@ gamepad = inputs.devices.gamepads[0]
 while True:
     events = gamepad.read()
     for event in events:
-        print("This evtype: ",event.ev_type, "This ev_code:", event.code, "This ev_state:", event.state)
+        print("Type of data code:" ,type(event.code), "         Type of state code: ", type(event.state))
 
