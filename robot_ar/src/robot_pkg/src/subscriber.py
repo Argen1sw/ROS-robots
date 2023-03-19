@@ -7,21 +7,26 @@ robot = motor_class.Robot(left_trim=0, right_trim=0)
 
 def robot_nav(data):
     
-    
-    print("Direct:", data, " / ", "Sub Obj: ", data.data)
+    #For troubleshooting::::::------------------ 
+    # print("Direct:", data, " / ", "Sub Obj: ", data.data)
+
 
     #Basic Navigation logic that uses the listener input for navigate 
     if data.data == 1:
-        
+        print("robot moving forward")
         robot.forward()
     elif data.data == 2:
-        robot.backward()
+       print("Robot moving backwards")
+       robot.backward()
     elif data.data == 3:
         robot.right()
+        print("Robot moving to the right")
     elif data.data == 4:
         robot.left()
+        print("Robot moving to the left")
     else:
         robot.stop()
+        print("Robot is not moving")
         
 
 def listener():
