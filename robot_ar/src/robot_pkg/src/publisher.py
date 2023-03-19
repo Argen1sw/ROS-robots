@@ -1,20 +1,19 @@
 #!/usr/bin/env python3
 # license removed for brevity
 import rospy
-from std_msgs.msg import String
+from std_msgs.msg import Int16
 
-def talker():
-    pub = rospy.Publisher('chatter', String, queue_size=10)
-    rospy.init_node('talker', anonymous=True)
-    rate = rospy.Rate(10) # 10hz
+def input_publisher():
+    pub = rospy.Publisher('user_output', Int16, queue_size=10)
+    rospy.init_node('input_publisher')
+    rate = rospy.Rate(10)
     while not rospy.is_shutdown():
-        hello_str = "hello world %s" % rospy.get_time()
-        rospy.loginfo(hello_str)
-        pub.publish(hello_str)
+        user_output = 1
+        pub.publish(user_output)
         rate.sleep()
 
 if __name__ == '__main__':
     try:
-        talker()
+        input_publisher()
     except rospy.ROSInterruptException:
         pass
