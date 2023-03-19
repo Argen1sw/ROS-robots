@@ -1,4 +1,4 @@
-# Robot projects
+# Robotics project
 Simple overview of use/purpose.
 
 Description
